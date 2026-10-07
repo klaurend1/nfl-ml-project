@@ -1,10 +1,10 @@
 # NFL Preseason Linear Regression Study
 
-Can NFL preseason performance predict regular-season success?
+**Can NFL preseason performance predict regular-season success?**
 
 This project uses historical NFL data from 2000–2025 to test whether preseason performance provides meaningful predictive information about regular-season win percentage.
 
-The analysis includes 798 historical team-seasons and evaluates several linear regression models using chronological train/test validation.
+The analysis includes **798 historical team-seasons** and evaluates several linear regression models using chronological train/test validation.
 
 ## Key Result
 
@@ -14,31 +14,32 @@ Although preseason performance showed weak historical correlations with regular-
 
 The best regression model used preseason win percentage alone:
 
-- Test MAE: 0.1539
-- Approximate error: 2.62 wins over a 17-game season
-- Test R²: -0.0279
+- **Test MAE:** 0.1539
+- **Approximate error:** 2.62 wins over a 17-game season
+- **Test R²:** -0.0279
+- **Baseline MAE:** 0.1531
 
-The baseline achieved a slightly better MAE of 0.1531.
+This demonstrates an important machine-learning lesson:
 
-This demonstrates an important machine-learning lesson: a historical relationship does not necessarily provide useful predictive power on unseen data.
+> A historical relationship does not necessarily provide useful predictive power on unseen data.
 
 ## Methodology
 
-Historical NFL team-season data were collected for 2000–2025, excluding 2020 because the NFL preseason was canceled.
+Historical NFL team-season data were collected for **2000–2025**, excluding 2020 because the NFL preseason was canceled.
 
-Preseason features included:
+### Preseason Features
 
 - Win percentage
 - Points scored per game
 - Points allowed per game
 - Point differential per game
 
-The prediction target was regular-season win percentage.
+The prediction target was **regular-season win percentage**.
 
-Rather than using a random split, the project uses chronological validation:
+Rather than using a random train/test split, the project uses chronological validation:
 
-- Training: 2000–2019
-- Testing: 2021–2025
+- **Training:** 2000–2019
+- **Testing:** 2021–2025
 
 Three regression models were compared against a mean baseline:
 
@@ -52,13 +53,17 @@ After model evaluation, the best-performing regression specification was retrain
 
 Because the model found preseason record to have very little predictive power, its 2026 predictions remain tightly clustered around an average regular-season record.
 
-See:
+Prediction output:
 
 `results/2026_predictions.csv`
 
+## Final Visualization
+
+![NFL Preseason Linear Regression](results/nfl_linear_regression_final.png)
+
 ## Project Structure
 
-```text
+<pre>
 .
 ├── data/
 │   ├── nfl_games_2000_2026.csv
@@ -88,8 +93,10 @@ See:
 ├── .gitignore
 ├── requirements.txt
 └── README.md
+</pre>
 
-Technologies
+## Technologies
+
 - Python
 - pandas
 - NumPy
@@ -97,24 +104,37 @@ Technologies
 - Matplotlib
 - Requests
 - nflreadpy
-Research Report
-A full technical report describing the dataset, methodology, regression models, validation strategy, results, limitations, and future work is included in the repository.
-[Read the full research report](report/nfl_preseason_linear_regression_report.pdf)
-Data Sources
-NFL regular-season and postseason data were obtained through the nflverse ecosystem using nflreadpy.
-NFL preseason schedules and scores were collected from ESPN's public NFL schedule endpoint.
-Reproducibility
-Install the required dependencies with:
-pip install -r requirements.txt
 
-The workflow is organized into scripts for:
-- downloading historical NFL data
-- downloading preseason data
-- building the merged dataset
-- exploratory analysis
-- linear regression model comparison
-- final visualization
-Author
-Keith Laurendine Jr.
-Computer Science
+## Research Report
+
+A full technical report describing the dataset, methodology, regression models, validation strategy, results, limitations, and future work is included in the repository.
+
+**[Read the full research report](report/nfl_preseason_linear_regression_report.pdf)**
+
+## Data Sources
+
+Regular-season and postseason NFL data were obtained through the **nflverse** ecosystem using `nflreadpy`.
+
+NFL preseason schedules and scores were collected from ESPN's public NFL schedule endpoint.
+
+## Reproducibility
+
+Install the required dependencies:
+
+    pip install -r requirements.txt
+
+The workflow is organized into six scripts covering:
+
+- Historical NFL data collection
+- Preseason data collection
+- Dataset construction
+- Exploratory analysis
+- Linear regression and model comparison
+- Final visualization
+
+## Author
+
+**Keith Laurendine Jr.**
+
+Computer Science  
 University of Houston-Downtown
